@@ -1,0 +1,18 @@
+#mumecsapi:
+#    resource: "@MUMECSAPIBundle/Resources/config/routing.yml"
+#    prefix:   /api
+
+#mumecs_store:
+#    resource: "@MUMECSStoreBundle/Resources/config/routing.yml"
+#    prefix:   /
+
+#mumecs_backend:
+#    resource: "@MUMECSBackendBundle/Resources/config/routing.yml"
+#    prefix:   /admin
+
+mumecs_frontend:
+    resource: "@MUMECSFrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+

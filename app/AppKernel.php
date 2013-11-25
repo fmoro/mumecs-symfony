@@ -20,6 +20,10 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new MUMECS\APIBundle\MUMECSAPIBundle(),
+            new MUMECS\BackendBundle\MUMECSBackendBundle(),
+            new MUMECS\StoreBundle\MUMECSStoreBundle(),
+            new MUMECS\FrontendBundle\MUMECSFrontendBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

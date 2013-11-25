@@ -1,0 +1,141 @@
+{#% use 'MUMECSFrontendBundle:Default:menu.use.html.twig' %#}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>MUMECS | {% block title %}{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        
+        {% stylesheets
+            'bundles/mumecsfrontend/css/bootstrap.css'
+            'bundles/mumecsfrontend/css/bootstrap-responsive.css'
+            
+            filter='yui_css' output="css/frontstyle.css"
+        %}
+        
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+        
+        {% endstylesheets %}
+        <style type="text/css">
+            body {
+              padding-top: 60px;
+              padding-bottom: 40px;
+            }
+        </style>
+        {#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/jquery-ui.min.js" type="text/javascript"></script>#}
+        
+        {% javascripts
+            'bundles/mumecsfrontend/js/jquery.js'
+            'bundles/mumecsfrontend/js/bootstrap-transition.js'
+            'bundles/mumecsfrontend/js/bootstrap-alert.js'
+            'bundles/mumecsfrontend/js/bootstrap-modal.js'
+            'bundles/mumecsfrontend/js/bootstrap-dropdown.js'
+            'bundles/mumecsfrontend/js/bootstrap-scrollspy.js'
+            'bundles/mumecsfrontend/js/bootstrap-tab.js'
+            'bundles/mumecsfrontend/js/bootstrap-tooltip.js'
+            'bundles/mumecsfrontend/js/bootstrap-popover.js'
+            'bundles/mumecsfrontend/js/bootstrap-button.js'
+            'bundles/mumecsfrontend/js/bootstrap-collapse.js'
+            'bundles/mumecsfrontend/js/bootstrap-carousel.js'
+            'bundles/mumecsfrontend/js/bootstrap-typeahead.js'
+
+            filter='?yui_js' output="js/frontscripts.js"
+        %}
+        
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    </head>
+    <body id="frontenddashboard"><!-- This id is used for the cookies -->
+        <!-- Top navigation bar -->
+        {% block navBar_superior%}
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <button class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="i-bar"></span>
+                            <span class="i-bar"></span>
+                            <span class="i-bar"></span>
+                        </button>
+                        {#<a class="brand" href="#">Libresfera</a>#}
+                        <div class="nav-collapse collapse">
+                            <ul class="nav">
+                                <li><a href="#{#{ path('mumecsfrontendBundle_homepage') }#}">Principal</a></li>
+                                <li><a href="#{#{ path('mumecsfrontendBundle_articulo') }#}">Articulos</a></li>
+                                <li><a href="#{#{ path('mumecsfrontendBundle_podcast') }#}">Podcasts</a></li>
+                                <li><a href="#">Radio</a></li>
+                                <li><a href="#">Contacto</a></li>
+                            </ul>
+                            {% block login %}
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    <ul class="nav pull-right">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ app.user}} <b class="caret"></b></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#">Panel personal</a></li>
+                                                {#% if app.user.type == 'administrador' %}
+                                                    <li class="divider"></li>
+                                                    <li><a href="{{ path('LEBackendBundle_homepage') }}">Panel de control</a></li>
+                                                {% endif %#}
+                                                <li class="divider"></li>
+                                                <li><a href="#{#{ path('mumecsfrontendBundle_logout') }#}">Logout</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                {% else %}
+                                    <form class="navbar-form pull-right" action="{{ path('mumecs_frontend_login_check') }}" method="POST">
+                                        <input class="span2" type="email" id="username" name="_username" required="required" placeholder="Email">
+                                        <input class="span2" type="password" id="password" name="_password" required="required" placeholder="Password">
+                                        <button type="submit" class="btn">Acceder</button>
+                                    </form>
+                                {% endif %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    
+        <!-- side nav -->
+        <div class="container">
+            <div class="row">
+                {% block main_container %}
+                    <div class="span8">
+                        {% block container_left %}
+                        {% endblock %}
+                    </div>
+                    <div class="span1">&nbsp;</div>
+                    <div class="span3">
+                        {#% block menu %}
+                            {% if menu is defined %}
+                                {{ parent() }}
+                            {% endif %}
+                        {% endblock %#}
+                    </div>
+                {% endblock %}
+            </div>
+            <hr>
+            <footer>
+                <p style="text-align: right">MUMECS 2013</p>
+            </footer>
+        </div>
+             
+        <script type="text/javascript">
+            
+            {% block functions_js %}
+            {% endblock %}
+
+            $(document).ready(function(){
+                {% block document_ready_js %}
+                {% endblock %}
+                
+                $('[data-type="hide"]').parent().parent().hide();
+                $(".infoTip").tooltip();
+            })
+        </script>
+    </body>
+</html>

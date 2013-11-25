@@ -1,0 +1,7 @@
+mumecs_store_homepage:
+    pattern:  /index
+    defaults: { _controller: MUMECSStoreBundle:Default:index }
+
+mumecs_store_create:
+    pattern: /create
+    defaults: { _controller: MUMECSStoreBundle:Default:create }

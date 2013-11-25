@@ -1,0 +1,54 @@
+mumecs_frontend_login:
+    pattern: /login
+    defaults: { _controller: "mumecs_frontend:Default:login" }
+    schemes: [http]
+
+mumecs_frontend_login_check:
+    pattern: /login_check
+    schemes: [https]
+    
+mumecs_frontend_logout:
+    pattern: /logout
+    schemes: [http]
+
+mumecs_frontend_user:
+    pattern:  /
+    defaults: { _controller: MUMECSFrontendBundle:User:index }
+
+mumecs_frontend_user_new:
+    pattern:  /new
+    defaults: { _controller: MUMECSFrontendBundle:User:new }
+
+mumecs_frontend_user_create:
+    pattern:  /create
+    defaults: { _controller: MUMECSFrontendBundle:User:create }
+    requirements: { _method: post }
+    
+mumecs_frontend_user_show:
+    pattern:  /{id}/show
+    defaults: { _controller: MUMECSFrontendBundle:User:show }
+    
+mumecs_frontend_usuario_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "MUMECSFrontendBundle:User:edit" }
+
+mumecs_frontend_usuario_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "MUMECSFrontendBundle:User:update" }
+    requirements: { _method: post|put }
+
+mumecs_frontend_usuario_suspend:
+    pattern:  /{id}/suspend
+    defaults: { _controller: "MUMECSFrontendBundle:User:suspend" }
+
+mumecs_frontend_usuario_reactivate:
+    pattern:  /{id}/reactivate
+    defaults: { _controller: "MUMECSFrontendBundle:User:reactivate" }
+    
+mumecs_frontend_usuario_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "MUMECSFrontendBundle:User:delete" }
+    
+mumecs_frontend_usuario_sendActivationMail:
+    pattern:  /{id}/sendActivationMail
+    defaults: { _controller: "MUMECSFrontendBundle:User:sendActivationMail" }

@@ -1,0 +1,4 @@
+mumecs_frontend_user:
+    resource: "@MUMECSFrontendBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+

@@ -1,0 +1,86 @@
+{% extends 'MUMECSFrontendBundle::base.html.twig' %}
+
+{% block main_container %}
+    <div class="row">
+        <div class="span5">
+            <hgroup id="hg1">
+                <h1>MUMECS access</h1>
+            </hgroup>
+            <div class="row well">
+                {% if error %}
+                    {#<div class="row">
+                        <div class="span4" style="padding:5px 0px;">#}
+                            <p style="color:red">Invalid username/password</p>
+                        {#</div>
+                    </div>#}
+                {% endif %}
+                <form class="form-horizontal" action="{{ path('mumecs_frontend_login_check') }}" method="post">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label">
+                                <label for="email" class="required">e-mail</label>
+                            </label>
+                            <div class="controls">
+                                <input id="username" name="_username" type="email" required="required" placeholder="e-mail address" {% if username is defined %}value="{{ username }}"{% endif %}>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">
+                                <label for="password" class="required">Password</label>
+                            </label>
+                            <div class="controls">
+                                <input id="password" name="_password" type="password" required="required" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">
+                                <label for="remember_me" class="checkbox"></label>
+                            </label>
+                            <div class="controls">
+                                <input type="checkbox" id="no_cerrar" name="_remember_me" checked> Remember me
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn">Acceder</button>
+                            <a class="pull-right" data-toggle="modal" href="#rememberme">¿Forgotten password?&ntilde;a</a>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="span1">&nbsp;</div>
+        <div class="span5">
+            <h2>Do not register yet?</h2>
+            <div class="row well">
+                <form class="form-horizontal" action="{{ path('mumecs_frontend_user_create') }}" method="post" {{ form_enctype(form) }}>
+                <fieldset>
+                    {{ form_errors(form) }}
+                    {{ form_widget(form) }}
+                    <div class="form-actions">
+                        <button class="btn btn-success" type="submit">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+            </div>
+        </div>
+    </div>
+    {#<div id="rememberme" class="modal hide">
+        <div class="modal-header">
+            <h3>Introduzca su dirección de e-mail</h3>
+        </div>
+        <div class="modal-body">
+            <form action="{{ path('usuario_sendPassword') }}" method="post">
+                {{ form_errors(form_email) }}
+                {{ form_widget(form_email) }}
+                <div class="row" style="margin-top:20px;">
+                    <div class="span1">
+                        <button type="submit" class="btn">Recordar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <small>Recibirá un e-mail con las instrucciones para cambiar su contraseña</small>
+        </div>
+    </div>#}
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'MUMECSFrontendBundle::base.html.twig' %}
+
+{% block main_container %}
+    <table>
+        <tr>
+            <td>Id:</td><td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <td>Name:</td><td>{{ entity.name }}</td>
+        </tr>
+        <tr>
+            <td>Password:</td><td>{{ entity.password }}</td>
+        </tr>
+        <tr>
+            <td>E-mail:</td><td>{{ entity.email }}</td>
+        </tr>
+    </table>
+{% endblock %}

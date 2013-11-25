@@ -1,0 +1,7 @@
+parameters:
+#    mumecs_frontend.example.class: MUMECS\FrontendBundle\Example
+
+services:
+#    mumecs_frontend.example:
+#        class: %mumecs_frontend.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

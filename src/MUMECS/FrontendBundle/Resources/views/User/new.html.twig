@@ -1,0 +1,9 @@
+{% extends 'MUMECSFrontendBundle::base.html.twig' %}
+
+{% block main_container %}
+    <form action="{{ path('mumecs_frontend_user_create')}}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+
+        <input type="submit" />
+    </form>
+{% endblock %}
