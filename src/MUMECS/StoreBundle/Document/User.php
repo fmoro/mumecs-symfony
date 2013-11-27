@@ -354,11 +354,11 @@ class User implements UserInterface, EquatableInterface {
     }
 
     /**
-     * Get deleted
+     * Is deleted
      *
      * @return boolean $deleted
      */
-    public function getDeleted()
+    public function isDeleted()
     {
         return $this->deleted;
     }
